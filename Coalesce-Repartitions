@@ -15,7 +15,9 @@ bartDf.rdd.partitions.size // => 4
 val bartDf = numbersDf.repartition(6)
 bartDf.rdd.partitions.size // => 6
 
-increase in partitions leads to shuffling
+increase in partitions leads to shuffling.repartition will shuffle data in all the partitions, therefore the network usage between the executors will be high and it will impacts the performance.
+
+repartition - it's recommended to use it while increasing the number of partitions, because it involve shuffling of all the data.
 
 
 
