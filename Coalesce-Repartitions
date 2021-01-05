@@ -1,0 +1,22 @@
+coalesce:
+Change the number of partitions of the output dataset to number specified in spark.sql.shuffle.partitions config parameter
+
+lets say if we has a dataframe with partitions
+numbersDf3.rdd.partitions.size // => 4
+val numbersDf3 = numbersDf.coalesce(6)
+numbersDf3.rdd.partitions.size // => 4
+this wont increase the partition size it will only reduce
+so coalesce reducing number of partitions so it helps in avoid shuffling
+
+repartitions:
+In turn repartition method used to either increase or decrease the number of partitions
+
+bartDf.rdd.partitions.size // => 4
+val bartDf = numbersDf.repartition(6)
+bartDf.rdd.partitions.size // => 6
+
+increase in partitions leads to shuffling
+
+
+
+
